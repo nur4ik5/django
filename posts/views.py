@@ -4,4 +4,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-	return HttpResponse("Привет, это моя первая страничка")
+	return render (request, "posts/index.html")
+
+
+def user_list(requests):
+	return HttpResponse('Пользователи')
