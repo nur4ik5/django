@@ -19,6 +19,8 @@ from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index),
-    path('', views.user_list),
+    path('', views.index, name = "index"),
+    path('user_list/', views.user_list, name = "user_list"),
+    path('message/', views.message, name = 'message'),
+    path('login/', views.login, name = 'login')
 ]
