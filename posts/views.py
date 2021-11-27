@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from django.http import HttpResponse
 
 
@@ -14,3 +15,5 @@ def message(request):
 
 def login(request):
 	return render (request, "posts/login.html")
+
+# Create your views here.
