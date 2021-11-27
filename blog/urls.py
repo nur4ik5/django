@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.index, name = "index"),
     path('user_list/', views.user_list, name = "user_list"),
     path('message/', views.message, name = 'message'),
-    path('login/', views.login, name = 'login')
+    path('login/', views.login, name = 'login'),
+    path('posts/', views.posts_list, name = 'posts_list'),
 ]
