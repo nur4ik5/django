@@ -7,7 +7,7 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 		
-class Date(models.Model):
+class Adversement(models.Model):
 	title = models.CharField(max_length = 30)
 	text = models.TextField()
 	publication_date = models.DateField()

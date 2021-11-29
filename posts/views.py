@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post, Date
+from .models import Post, Adversement
 
 
 def index(request):
@@ -22,10 +22,10 @@ def posts_list(request):
 	}
 	return render (request, "posts/posts_list.html", context)
 
-def date(request):
-	posts = Date.objects.all()
+def Adversement(request):
+	posts = Adversement.objects.all()
 	condate = {
-		'date': date 
+		'adversement': adversement 
 	}
-	return render (request, "posts/date.html", condate)
+	return render (request, "posts/adversement.html", condate)
 
