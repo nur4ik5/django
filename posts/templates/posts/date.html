@@ -1,0 +1,28 @@
+{% extends "posts/base.html" %}
+{% load static %}
+{% block content %}
+	<div class="container">
+		<div class="row mt-05">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Title</th>
+			      <th scope="col">Text</th>
+			      <th scope="col">Date</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for atribut in atribut  %}
+			    <tr>
+			      <th scope="row">{{ atribut.id}}</th>
+			      <td>{{ atribut.title}}</td>
+			      <td>{{ atribut.text}}</td>
+			      <td>{{ atribut.publication_date}}</td>
+			    {% endfor %}
+			    </tr>
+			  </tbody>
+			</table>		
+		</div>
+	</div>
+{% endblock %}
