@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Date
 
 
 def index(request):
@@ -21,4 +21,11 @@ def posts_list(request):
 		'posts': posts 
 	}
 	return render (request, "posts/posts_list.html", context)
+
+def date(request):
+	posts = Date.objects.all()
+	condate = {
+		'date': date 
+	}
+	return render (request, "posts/date.html", condate)
 

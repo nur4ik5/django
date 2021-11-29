@@ -24,4 +24,5 @@ urlpatterns = [
     path('message/', views.message, name = 'message'),
     path('login/', views.login, name = 'login'),
     path('posts/', views.posts_list, name = 'posts_list'),
+    path('date/', views.date, name = 'date'),
 ]
