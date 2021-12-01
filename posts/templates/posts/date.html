@@ -10,15 +10,17 @@
 			      <th scope="col">Title</th>
 			      <th scope="col">Text</th>
 			      <th scope="col">Date</th>
+			      <th scope="col">kon</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	{% for atribut in atribut  %}
+			  	{% for a in atribut  %}
 			    <tr>
-			      <th scope="row">{{ atribut.id}}</th>
-			      <td>{{ atribut.title}}</td>
-			      <td>{{ atribut.text}}</td>
-			      <td>{{ atribut.publication_date}}</td>
+			      <th scope="row">{{ a.id}}</th>
+			      <td>{{ a.title}}</td>
+			      <td>{{ a.text}}</td>
+			      <td>{{ a.publication_date}}</td>
+			      <td class="text-center">{{ a.view_num}}</td>
 			    {% endfor %}
 			    </tr>
 			  </tbody>
