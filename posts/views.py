@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post, Date
+from .models import Post, All_list
 
 
 def index(request):
@@ -22,10 +22,10 @@ def posts_list(request):
 	}
 	return render (request, "posts/posts_list.html", context)
 
-def date(request):
-	atribut = Date.objects.all()
+def all_list(request):
+	atribut = All_list.objects.all()
 	context = {
 		'atribut': atribut
 	}
-	return render (request, "posts/date.html", context)
+	return render (request, "posts/all_list.html", context)
 
