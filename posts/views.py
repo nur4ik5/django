@@ -15,10 +15,16 @@ def message(request):
 def login(request):
 	return render (request, "posts/login.html")
 
+# вьюха для списка постов и поиска
 def posts_list(request):
-	posts = Post.objects.all()
+	search = request.GET.get('q', '')
+	if search:
+		posts = Post.objects.filter(text__contains=search)
+	else:
+		posts = Post.objects.all()
 	context = {
-		'posts': posts 
+		'posts': posts,
+		'search_word': search 
 	}
 	return render (request, "posts/posts_list.html", context)
 
