@@ -28,6 +28,12 @@ def posts_list(request):
 	}
 	return render (request, "posts/posts_list.html", context)
 
+def post_detail(request, pk):
+	post = Post.objects.get(pk=pk)
+	context = {'post': post}
+	return render(request, 'posts/post_detail.html', context)
+
+
 def all_list(request):
 	atribut = All_list.objects.all()
 	context = {
