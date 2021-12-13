@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post, All_list
 
 
@@ -40,4 +40,11 @@ def all_list(request):
 		'atribut': atribut
 	}
 	return render (request, "posts/all_list.html", context)
+
+
+def all_list_delete(request, adv_id):
+	advertisement = get_object_or_404(All_list, id=adv_id)
+	advertisement.delete()
+	return HttpResponseRedirect('/')
+
 

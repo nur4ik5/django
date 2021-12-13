@@ -34,5 +34,5 @@ urlpatterns = [
 
     path('all_list/', views.all_list, name = 'all_list'),
 
-    
+    path('all_list/<adv_id>/delete', views.all_list_delete, name = 'all_list_delete'),
 ]

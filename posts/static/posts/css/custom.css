@@ -6,3 +6,6 @@
 	color: purple;
 	text-decoration: none;
 }
+.delete-link svg {
+	fill: red;
+}
