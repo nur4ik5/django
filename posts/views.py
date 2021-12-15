@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, All_list
+from .models import Post, Advertisement
 
 
 def index(request):
@@ -34,16 +34,16 @@ def post_detail(request, pk):
 	return render(request, 'posts/post_detail.html', context)
 
 
-def all_list(request):
-	atribut = All_list.objects.all()
+def advertisement(request):
+	atribut = Advertisement.objects.all()
 	context = {
-		'atribut': atribut
+		'advertisement': advertisement
 	}
-	return render (request, "posts/all_list.html", context)
+	return render (request, "posts/advertisement.html", context)
 
 
-def all_list_delete(request, adv_id):
-	advertisement = get_object_or_404(All_list, id=adv_id)
+def advertisement_delete(request, adv_id):
+	advertisement = get_object_or_404(Advertisement, id=adv_id)
 	advertisement.delete()
 	return HttpResponseRedirect('/')
 

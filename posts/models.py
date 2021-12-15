@@ -7,10 +7,10 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 		
-class All_list(models.Model):
+class Advertisement(models.Model):
 	title = models.CharField(max_length = 30)
 	text = models.TextField()
-	publication_date = models.DateField()
+	creation_date = models.DateField()
 	view_num = models.IntegerField(default=6)
 	
 	def __str__(self):
