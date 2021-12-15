@@ -13,9 +13,14 @@ urlpatterns = [
 
     path('login/', views.login, name = 'login'),
 
+    ####################### Posts ################################
     path('posts/', views.posts_list, name = 'posts_list'),
 
     path('posts/<pk>', views.post_detail, name = 'post_detail'),
+
+    path('posts/create', views.post_create, name = 'post_create'),
+
+    ###################### ADV #################################
 
     path('advertisement/', views.advertisement, name = 'advertisement'),
 

@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from .models import Post, Advertisement
+from .forms import PostCreationForm
 
 
 def index(request):
@@ -31,20 +33,32 @@ def posts_list(request):
 def post_detail(request, pk):
 	post = Post.objects.get(pk=pk)
 	context = {'post': post}
+	# запрос поста из бд по primary key
+	# post = get_object_or_404(Post, id=pk)
 	return render(request, 'posts/post_detail.html', context)
 
 
+def post_create(request):
+	form = PostCreationForm()
+	context = {
+		'form': form 
+	}
+	return render(request, 'posts/post_create.html', context)
+
+
 def advertisement(request):
-	atribut = Advertisement.objects.all()
+	advertisement = Advertisement.objects.all()
 	context = {
 		'advertisement': advertisement
 	}
 	return render (request, "posts/advertisement.html", context)
 
 
+
 def advertisement_delete(request, adv_id):
 	advertisement = get_object_or_404(Advertisement, id=adv_id)
 	advertisement.delete()
-	return HttpResponseRedirect('/')
-
+	# Advertisement.objects.get(id=adv_id).delete()
+	# return redirect('advertisement')
+	return HttpResponseRedirect(reverse('advertisement'))
 
