@@ -1,44 +1,40 @@
 {% extends "posts/base.html" %}
 {% load static %}
 {% block content %}
-	<div class="container">
-		<div class="row mt-05">
-			<table class="table">
-				<form action = "{%  url 'posts_list'  %}">
-					<div class="col-8">
-						<input type="text" 
-						class="form-control" 
-						placeholder="Что вы ищете?"
-						name="q"
-						value="{{search_word}}">
-					</div>
-					<button class="btn btn-primary col-2">
-						ПОИСК
-					</button>
-				</form>
-				<a class=" btn btn-success" 
-				href="{% url 'post_create' %}"> Добавить</a>
-				<thead>
-				    <tr>
-				      <th scope="col">ID</th>
-				      <th scope="col">Title</th>
-				      <th scope="col">Text</th>
-				    </tr>
-				</thead>
-				<tbody>
-					{% for p in posts  %}
-					<tr>
-				       <td scope="row">{{p.id}}</td>
-				       <td>
-					       <span>
-					       <a href="{% url 'post_detail' p.id%}" class="post-link">{{ p.title}} </a>
-					       </span>	     	
-				       </td>
-				       <td>{{p.text}}</td>			       
-				    </tr>
-				 	{% endfor %}
-				 </tbody>
-			</table>	
-		</div>
-	</div>
+<div class="container">
+   <form action = "{%  url 'posts_list'  %}">
+      <div class="row mt-05 gap-2">
+         <table class="table"> 
+            <div class="col-8">
+               <input type="text" 
+                  class="form-control" placeholder="Что вы ищете?" name="q" value="{{search_word}}">
+            </div>
+            <button class="btn btn-primary col-1">
+            ПОИСК
+            </button>
+   </form>
+   <a class=" btn btn-success col-1" href="{% url 'post_create' %}"> Добавить</a>
+      <thead>
+         <tr>
+         <th scope="col">ID</th>
+         <th scope="col">Title</th>
+         <th scope="col">Text</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for p in posts  %}
+         <tr>
+         <td scope="row">{{p.id}}</td>
+         <td>
+            <span>
+         <a href="{% url 'post_detail' p.id%}" class="post-link">{{ p.title}} </a>
+            </span>	     	
+         </td>
+         <td>{{p.text}}</td>			       
+         </tr>
+         {% endfor %}
+      </tbody>
+         </table>
+      </div>	
+</div>
 {% endblock%}

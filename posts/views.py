@@ -17,7 +17,10 @@ def message(request):
 def login(request):
 	return render (request, "posts/login.html")
 
+
+##################################### POSTS #########################################
 # вьюха для списка постов и поиска
+
 def posts_list(request):
 	search = request.GET.get('q', '')
 	if search:
@@ -39,12 +42,22 @@ def post_detail(request, pk):
 
 
 def post_create(request):
-	form = PostCreationForm()
+	print("HHTP метод", request.method)
+	# Проверка метода запроса
+	if request.method = 'POST':
+		form = PostCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('posts_list')
+
+
+
 	context = {
 		'form': form 
 	}
 	return render(request, 'posts/post_create.html', context)
 
+################################## ADV ##################################################
 
 def advertisement(request):
 	advertisement = Advertisement.objects.all()
