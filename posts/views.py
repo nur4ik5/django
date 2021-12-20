@@ -43,21 +43,23 @@ def post_detail(request, pk):
 
 def post_create(request):
 	print("HHTP метод", request.method)
+	form = PostCreationForm()
 	# Проверка метода запроса
-	if request.method = 'POST':
+	if request.method == 'POST':
+		print('Что прилетает с браузера', request.POST)
 		form = PostCreationForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return redirect('posts_list')
 
 
+	context = {'form': form }
 
-	context = {
-		'form': form 
-	}
 	return render(request, 'posts/post_create.html', context)
 
+
 ################################## ADV ##################################################
+
 
 def advertisement(request):
 	advertisement = Advertisement.objects.all()
