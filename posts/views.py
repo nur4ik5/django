@@ -42,11 +42,11 @@ def post_detail(request, pk):
 
 
 def post_create(request):
-	print("HHTP метод", request.method)
+	# print("HHTP метод", request.method)
 	form = PostCreationForm()
 	# Проверка метода запроса
 	if request.method == 'POST':
-		print('Что прилетает с браузера', request.POST)
+		# print('Что прилетает с браузера', request.POST)
 		form = PostCreationForm(request.POST)
 		if form.is_valid():
 			form.save()
@@ -58,7 +58,26 @@ def post_create(request):
 	return render(request, 'posts/post_create.html', context)
 
 
-################################## ADV ##################################################
+def post_update(request, pk):
+	post = get_object_or_404(Post, id=pk)
+	form = PostCreationForm(instance=post)
+	if request.method == 'POST':
+		form = PostCreationForm(request.POST, instance=post)
+		if form.is_valid():
+			form.save()
+			return redirect('posts_list')
+
+	context = {'form': form}
+	return render(request, 'posts/post_update.html', context)
+
+
+def post_delete(request, pk):
+	obj = get_object_or_404(Post, id=pk)
+	obj.delete()
+	return HttpResponseRedirect(reverse('posts_list'))
+
+
+################################## ADVERT ##################################################
 
 
 def advertisement(request):
@@ -76,4 +95,5 @@ def advertisement_delete(request, adv_id):
 	# Advertisement.objects.get(id=adv_id).delete()
 	# return redirect('advertisement')
 	return HttpResponseRedirect(reverse('advertisement'))
+
 
