@@ -5,9 +5,8 @@
    <form action = "{%  url 'posts_list' %}">
       <div class="row mt-05 gap-2">
          <table class="table"> 
-            <div class="col-8">
-               <input type="text" 
-                  class="form-control" placeholder="Что вы ищете?" name="q" value="{{search_word}}">
+            <div class="col-8">  
+               <input type="text"  class="form-control" placeholder="Что вы ищете?" name="q" value="{{search_word}}">
             </div>
             <button class="btn btn-primary col-1">ПОИСК</button>
    </form>
@@ -17,6 +16,7 @@
          <th scope="col">ID</th>
          <th scope="col">Title</th>
          <th scope="col">Text</th>
+         <td></td>
          <td></td>
          <td></td>
          </tr>
@@ -40,10 +40,17 @@
                      </svg>
                   </a>
                </td>
+               <td>
+                  {% if p.cover%}
+                  <img src="{{p.cover.url}}" alt="">
+                  {% else %}
+                  <img src="{% static 'posts/images/default.png' %}"width = "50" height="50" >
+                  {% endif %}
+               </td>
             </tr>
          {% endfor %}
       </tbody>
-         </table>
+   </table>
       </div>	
 </div>
 {% endblock%}
